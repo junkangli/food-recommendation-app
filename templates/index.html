@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Recommendation App</title>
+</head>
+<body>
+    <h1>Food Recommendation App</h1>
+    <table>
+       <thead>
+           <tr>
+               <td>Area</td>
+               <td>Number of Meals</td>
+            </tr>
+       </thead>
+       <tbody>
+        {% for record in data %}
+            <tr>
+                <td>{{ record['area'] }}</td>
+                <td>{{ record['count'] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
