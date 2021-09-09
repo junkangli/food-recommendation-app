@@ -11,6 +11,11 @@ def index():
         data.append({'area': area, 'count': query.count_meals_by_area(area)})
     return render_template('index.html', data=data)
 
+@application.route('/search-by-ingredients')
+def search_by_ingredients():
+    ingredients = query.list_all_ingredients()
+    return render_template('search-by-ingredients.html', ingredients=ingredients)
+
 if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.

@@ -1,4 +1,6 @@
 __pycache__/
+*.pdf
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

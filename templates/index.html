@@ -1,26 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <title>Food Recommendation App</title>
-</head>
-<body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+{% extends 'base.html' %}
 
-    <h1>Food Recommendation App</h1>
+{% block content %}
+    <h1>Welcome to junkang's {% block title %} Food Recommendation App {% endblock %}</h1>
     <p>
         We have meal recommendations for the following list of areas!
     </p>
     <table class="table">
-       <thead>
-           <tr>
-               <th scope="col">Area</th>
-               <th scope="col">Number of Meals</th>
+    <thead>
+        <tr>
+            <th scope="col">Area</th>
+            <th scope="col">Number of Meals</th>
             </tr>
-       </thead>
-       <tbody>
+    </thead>
+    <tbody>
         {% for record in data %}
             <tr>
                 <td>{{ record['area'] }}</td>
@@ -29,5 +21,4 @@
         {% endfor %}
         </tbody>
     </table>
-</body>
-</html>
+{% endblock %}
