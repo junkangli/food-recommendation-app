@@ -20,13 +20,15 @@
             <tr>
                 <th scope="col">Meal ID</th>
                 <th scope="col">Meal Name</th>
-                </tr>
+                <th scope="col">Category</th>
+            </tr>
         </thead>
         <tbody>
         {% for meal in meals %}
             <tr>
                 <td>{{ meal['id'] }}</td>
                 <td>{{ meal['name'] }}</td>
+                <td>{{ meal['category'] }}</td>
             </tr>
         {% endfor %}
         </tbody>

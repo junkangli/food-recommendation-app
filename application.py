@@ -16,7 +16,14 @@ def search_by_ingredients():
     ingredients = query.list_all_ingredients()
     ingredient = request.args.get('ingredient')
     if ingredient:
-        meals = query.get_meals_by_main_ingredient(ingredient)
+        meals = []
+        for meal in query.get_meals_by_main_ingredient(ingredient):
+            mealDetail = query.get_meal_by_id(meal['id'])
+            meals.append({
+                'id': mealDetail['id'],
+                'name': mealDetail['name'],
+                'category': mealDetail['category']
+            })
         return render_template('search-by-ingredients.html', ingredients=ingredients, meals=meals)
     else:
         return render_template('search-by-ingredients.html', ingredients=ingredients)

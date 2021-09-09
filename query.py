@@ -34,4 +34,5 @@ def get_meal_by_id(idMeal):
     api_url = f"https://www.themealdb.com/api/json/v1/1/lookup.php?i={idMeal}"
     response = requests.get(api_url)
     result = response.json()
-    return [(meal['idMeal'], meal['strMeal'], meal['strCategory']) for meal in result['meals']]
+    meal = result['meals'][0]
+    return {'id': meal['idMeal'], 'name': meal['strMeal'], 'category': meal['strCategory']}
