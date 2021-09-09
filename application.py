@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 import query
 
@@ -11,10 +11,15 @@ def index():
         data.append({'area': area, 'count': query.count_meals_by_area(area)})
     return render_template('index.html', data=data)
 
-@application.route('/search-by-ingredients')
+@application.route('/search-by-ingredients', methods=('GET', 'POST'))
 def search_by_ingredients():
     ingredients = query.list_all_ingredients()
-    return render_template('search-by-ingredients.html', ingredients=ingredients)
+    ingredient = request.args.get('ingredient')
+    if ingredient:
+        meals = query.get_meals_by_main_ingredient(ingredient)
+        return render_template('search-by-ingredients.html', ingredients=ingredients, meals=meals)
+    else:
+        return render_template('search-by-ingredients.html', ingredients=ingredients)
 
 if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be

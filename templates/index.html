@@ -6,13 +6,13 @@
         We have meal recommendations for the following list of areas!
     </p>
     <table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Area</th>
-            <th scope="col">Number of Meals</th>
-            </tr>
-    </thead>
-    <tbody>
+        <thead>
+            <tr>
+                <th scope="col">Area</th>
+                <th scope="col">Number of Meals</th>
+                </tr>
+        </thead>
+        <tbody>
         {% for record in data %}
             <tr>
                 <td>{{ record['area'] }}</td>

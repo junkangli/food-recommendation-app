@@ -2,4 +2,34 @@
 
 {% block content %}
     <h1>{% block title %} Search by Ingredients {% endblock %}</h1>
+    <form>
+        <div class="form-group">
+            <select name="ingredient" class="form-select" aria-label="Choose ingredients">
+            {% for ingredient in ingredients %}
+                <option value="{{ ingredient }}">{{ ingredient }}</option>
+            {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+    {% if meals %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Meal ID</th>
+                <th scope="col">Meal Name</th>
+                </tr>
+        </thead>
+        <tbody>
+        {% for meal in meals %}
+            <tr>
+                <td>{{ meal['id'] }}</td>
+                <td>{{ meal['name'] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
 {% endblock %}

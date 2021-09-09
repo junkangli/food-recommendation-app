@@ -22,7 +22,7 @@ def get_meals_by_main_ingredient(ingredient):
     api_url = f"https://www.themealdb.com/api/json/v1/1/filter.php?i={ingredient}"
     response = requests.get(api_url)
     result = response.json()
-    return [(meal['idMeal'], meal['strMeal']) for meal in result['meals']]
+    return [{'id': meal['idMeal'], 'name': meal['strMeal']} for meal in result['meals']]
 
 def list_all_categories():
     api_url = "https://www.themealdb.com/api/json/v1/1/list.php?c=list"
