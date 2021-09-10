@@ -13,7 +13,8 @@
         Labels found in {{ filename }}
         <pre>
         {% for label in labels %}
-        {{ label['Name'] }}: {{ label['Confidence'] }}
+            {{ label['Name'] }}: {{ label['Confidence'] }}
+            <a href="{{ url_for('search_by_description', search=label['Name']) }}">Search</a>
         {% endfor %}
         </pre>
     </div>
