@@ -7,4 +7,6 @@ import query
 
 #print(query.get_meals_by_main_ingredient('Chicken'))
 
-print(query.get_meal_by_id('52940'))
+#print(query.get_meal_by_id('52940'))
+
+print(query.search_meal_by_name('wan'))

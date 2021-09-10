@@ -3,11 +3,11 @@
 {% block content %}
     <h1>{% block title %} Search by Description {% endblock %}</h1>
     <form>
-        <div class="form-group">
+        <div class="input-group">
             <input name="search" class="form-control" type="search" placeholder="Search by meal description">
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Search</button>
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
         </div>
     </form>
     {% if meals %}
@@ -16,7 +16,6 @@
             <tr>
                 <th scope="col">Meal ID</th>
                 <th scope="col">Meal Name</th>
-                <th scope="col">Category</th>
             </tr>
         </thead>
         <tbody>
@@ -24,10 +23,11 @@
             <tr>
                 <td><a href="{{ url_for('meal', id=meal['id']) }}">{{ meal['id'] }}</a></td>
                 <td>{{ meal['name'] }}</td>
-                <td>{{ meal['category'] }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    {% else %}
+    No match found.
     {% endif %}
 {% endblock %}
