@@ -9,10 +9,11 @@ And uses [Flask](https://flask.palletsprojects.com/) because it seems to be the 
 [Poetry](https://python-poetry.org/) is used for dependency management because of familiarity with the tool.
 [Bootstrap](https://getbootstrap.com/) is used for styling the web site.
 For deployment to Amazon Web Services, AWS Elastic Beanstalk is used due to its ease of use.
+In addition, Amazon Rekognition is used to add image analysis based on photo uploaded by user to search for meal description.
 
 ## Infrastructure
 
-The application is hosted on an Amazon Linux EC2 instance to adhere to the requirements that states to 
+The application is hosted in Singapore region on an Amazon Linux EC2 instance to adhere to the requirements that states to 
 > Set up your own AWS free tier VM
 
 The instance is a `t2.micro` instance type that is in an Auto Scaling group (ASG) to keep it available.
