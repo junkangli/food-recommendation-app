@@ -35,4 +35,19 @@ def get_meal_by_id(idMeal):
     response = requests.get(api_url)
     result = response.json()
     meal = result['meals'][0]
-    return {'id': meal['idMeal'], 'name': meal['strMeal'], 'category': meal['strCategory']}
+    return {
+        'id': meal['idMeal'],
+        'name': meal['strMeal'],
+        'category': meal['strCategory'],
+        'ingredients': get_ingredients(meal),
+        'instructions': meal['strInstructions']
+    }
+
+def get_ingredients(meal):
+    ingredients = []
+    for k, v in meal.items():
+        if k.startswith('strIngredient'):
+            print(v)
+            if v is not None and len(v) > 0:
+                ingredients.append(v)
+    return ingredients
