@@ -7,8 +7,18 @@
         <tbody>
         {% for key, value in meal.items() %}
             <tr>
-                <th scope="row">{{ key }}</td>
-                <td>{{ value }}</td>
+                <th scope="row">{{ key.capitalize() }}</th>
+                <td>
+                {% if key == 'ingredients' %}
+                    <ul class="list-inline">
+                    {% for ingredient in value %}
+                        <li class="list-inline-item">{{ ingredient }}</li>
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    {{ value }}
+                {% endif %}
+                </td>
             </tr>
         {% endfor %}
         </tbody>

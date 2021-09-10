@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Search by Description {% endblock %}</h1>
+    <form>
+        <div class="form-group">
+            <input name="search" class="form-control" type="search" placeholder="Search by meal description">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+    {% if meals %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Meal ID</th>
+                <th scope="col">Meal Name</th>
+                <th scope="col">Category</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for meal in meals %}
+            <tr>
+                <td><a href="{{ url_for('meal', id=meal['id']) }}">{{ meal['id'] }}</a></td>
+                <td>{{ meal['name'] }}</td>
+                <td>{{ meal['category'] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+{% endblock %}

@@ -12,6 +12,12 @@ def count_meals_by_area(area):
     result = response.json()
     return len(result['meals'])
 
+def list_all_categories():
+    api_url = "https://www.themealdb.com/api/json/v1/1/list.php?c=list"
+    response = requests.get(api_url)
+    result = response.json()
+    return [category['strCategory'] for category in result['meals']]
+
 def list_all_ingredients():
     api_url = "https://www.themealdb.com/api/json/v1/1/list.php?i=list"
     response = requests.get(api_url)
@@ -22,13 +28,13 @@ def get_meals_by_main_ingredient(ingredient):
     api_url = f"https://www.themealdb.com/api/json/v1/1/filter.php?i={ingredient}"
     response = requests.get(api_url)
     result = response.json()
-    return [{'id': meal['idMeal'], 'name': meal['strMeal']} for meal in result['meals']]
+    return [{'id': meal['idMeal'], 'name': meal['strMeal'], 'category': meal['strCategory']} for meal in result['meals']]
 
-def list_all_categories():
-    api_url = "https://www.themealdb.com/api/json/v1/1/list.php?c=list"
+def search_meal_by_name(input):
+    api_url = f"https://www.themealdb.com/api/json/v1/1/search.php?s={input}"
     response = requests.get(api_url)
     result = response.json()
-    return [category['strCategory'] for category in result['meals']]
+    return [{'id': meal['idMeal'], 'name': meal['strMeal'], 'category': meal['strCategory']} for meal in result['meals']]
 
 def get_meal_by_id(idMeal):
     api_url = f"https://www.themealdb.com/api/json/v1/1/lookup.php?i={idMeal}"
