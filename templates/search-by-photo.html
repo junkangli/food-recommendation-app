@@ -9,6 +9,13 @@
         </div>
     </form>
     {% if filename %}
-    {{ filename }}
+    <div class="container">
+        Labels found in {{ filename }}
+        <pre>
+        {% for label in labels %}
+        {{ label['Name'] }}: {{ label['Confidence'] }}
+        {% endfor %}
+        </pre>
+    </div>
     {% endif %}
 {% endblock %}

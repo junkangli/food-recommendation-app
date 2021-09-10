@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
 
 import query
+import rekognition
 
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
@@ -55,7 +56,10 @@ def search_by_photo():
             file.save(os.path.join(application.config['UPLOAD_FOLDER'], filename))
             return redirect(url_for('search_by_photo', filename=filename))
     filename = request.args.get('filename')
-    return render_template('search-by-photo.html', filename=filename)
+    if filename:
+        labels = rekognition.detect_labels_local_file(os.path.join(application.config['UPLOAD_FOLDER'], filename))
+        return render_template('search-by-photo.html', filename=filename, labels=labels)
+    return render_template('search-by-photo.html')
 
 if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be

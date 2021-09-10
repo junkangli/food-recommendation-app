@@ -13,5 +13,6 @@ import rekognition
 #print(query.search_meal_by_name('wan'))
 
 photo = "d:/temp/photo.jpg"
-label_count=rekognition.detect_labels_local_file(photo)
-print("Labels detected: " + str(label_count))
+labels = rekognition.detect_labels_local_file(photo)
+for label in labels:
+    print (label['Name'] + ' : ' + str(label['Confidence']))
