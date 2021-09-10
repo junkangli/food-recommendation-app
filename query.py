@@ -55,7 +55,6 @@ def get_ingredients(meal):
     ingredients = []
     for k, v in meal.items():
         if k.startswith('strIngredient'):
-            print(v)
             if v is not None and len(v) > 0:
                 ingredients.append(v)
     return ingredients

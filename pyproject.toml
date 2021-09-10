@@ -8,6 +8,7 @@ authors = ["Li Junkang <junkang@singtel.com>"]
 python = "^3.9"
 requests = "^2.26.0"
 Flask = "^2.0.1"
+boto3 = "^1.18.39"
 
 [tool.poetry.dev-dependencies]
 

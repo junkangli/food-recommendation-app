@@ -1,4 +1,5 @@
 import query
+import rekognition
 
 # for area in query.list_all_areas():
 #     print(f'{area} || {query.count_meals_by_area(area)}')
@@ -9,4 +10,8 @@ import query
 
 #print(query.get_meal_by_id('52940'))
 
-print(query.search_meal_by_name('wan'))
+#print(query.search_meal_by_name('wan'))
+
+photo = "d:/temp/photo.jpg"
+label_count=rekognition.detect_labels_local_file(photo)
+print("Labels detected: " + str(label_count))
