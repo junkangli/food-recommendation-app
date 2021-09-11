@@ -3,8 +3,13 @@
 {% block content %}
     <h1>Welcome to junkang's {% block title %} Food Recommendation App {% endblock %}</h1>
     <p>
-        We have meal recommendations for the following list of areas!
+        We have meal recommendations for a list of areas. Click GO! to get it!
     </p>
+    <form>
+        <input type="hidden" name="show" value="1">
+        <button type="submit" class="btn btn-primary">GO!</button>
+    </form>
+    {% if data %}
     <table class="table">
         <thead>
             <tr>
@@ -21,4 +26,5 @@
         {% endfor %}
         </tbody>
     </table>
+    {% endif %}
 {% endblock %}

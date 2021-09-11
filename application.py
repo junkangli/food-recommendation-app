@@ -16,10 +16,13 @@ def allowed_file(filename):
 
 @application.route('/')
 def index():
-    data = []
-    for area in query.list_all_areas():
-        data.append({'area': area, 'count': query.count_meals_by_area(area)})
-    return render_template('index.html', data=data)
+    show = request.args.get('show')
+    if show:
+        data = []
+        for area in query.list_all_areas():
+            data.append({'area': area, 'count': query.count_meals_by_area(area)})
+        return render_template('index.html', data=data)
+    return render_template('index.html')
 
 @application.route('/search-by-ingredients')
 def search_by_ingredients():
