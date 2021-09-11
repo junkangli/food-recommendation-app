@@ -8,7 +8,7 @@ import rekognition
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 application = Flask(__name__)
-application.config['MAX_CONTENT_LENGTH'] = 16 * 1000 * 1000
+application.config['MAX_CONTENT_LENGTH'] = 1 * 1000 * 1000
 application.config['UPLOAD_FOLDER'] = os.environ.get('UPLOAD_FOLDER', 'd:/temp/uploads')
 
 def allowed_file(filename):

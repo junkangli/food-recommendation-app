@@ -2,12 +2,19 @@
 
 {% block content %}
     <h1>{% block title %} Search by Photo {% endblock %}</h1>
+    <p>
+        Take a photo of a dish or ingredient that you want to identify and upload it here. 
+        And we can perform an image analysis to provide you suggestions.
+    </p>
     <form method="POST" enctype="multipart/form-data">
         <div class="input-group mb-3">
             <input class="form-control" type="file" id="file" name="file">
             <button class="btn btn-primary" type="submit">Upload</button>
         </div>
     </form>
+    <div class="alert alert-info" role="alert">
+        Keep file size under 1MB.
+    </div>
     {% if filename %}
     <div class="container">
         Labels found in {{ filename }}
